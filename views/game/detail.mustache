@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {{#model}}
+    <h3>{{title}}</h3>
+    <ul>
+      {{#release}}
+        <span>{{year}}</span>
+        <span>{{country}}</span>
+      {{/release}}
+    </ul>
+    {{/model}}
+
+    {{#model}}
+      <form class="" action="/detail/{{_id}}" method="post">
+        <input type="submit" name="" value="delete game">
+      </form>
+    {{/model}}
+
+
+
+
+  </body>
+</html>

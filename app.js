@@ -18,6 +18,11 @@ mongoose.connect('mongodb://localhost:27017/gamesdb');
 
 app.get('/', gameController.list);
 
+app.get('/detail/:id', gameController.detail)
+// app.get('/', gameController.edit);
+
+app.post('/detail/:id', gameController.delete);
+
 app.post('/', function(req, res){
   console.log(req.body);
 
