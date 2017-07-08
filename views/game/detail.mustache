@@ -5,21 +5,32 @@
     <title></title>
   </head>
   <body>
+
+    <h1>Feel free to click on the title, year, or country to change them.</h1>
+
+    <!-- adding contenteditable lets you edit the text but not sure how to save the text -->
     {{#model}}
-    <h3>{{title}}</h3>
+    <h3 id="title" contenteditable="true">{{title}}</h3>
     <ul>
       {{#release}}
-        <span>{{year}}</span>
-        <span>{{country}}</span>
+        <span id="year" contenteditable="true">{{year}}</span>
+        <span id="country" contenteditable="true">{{country}}</span>
       {{/release}}
     </ul>
     {{/model}}
+
+    <!-- {{#model}}
+      <form class="" action="/detail/{{_id}}" method="post">
+        <input type="submit"  name="" value="Edit Title">
+      </form>
+    {{/model}} -->
 
     {{#model}}
       <form class="" action="/detail/{{_id}}" method="post">
         <input type="submit" name="" value="delete game">
       </form>
     {{/model}}
+
 
 
 

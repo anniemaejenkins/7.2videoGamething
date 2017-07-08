@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const mustacheExpress = require('mustache-express');
 const Game = require('./models/games');
 const gameController = require('./controllers/gameController');
+const editController = require('./controllers/editController');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -23,6 +24,31 @@ app.get('/detail/:id', gameController.detail)
 
 app.post('/detail/:id', gameController.delete);
 
+//
+app.post('/detail/:id', editController.edit);
+
+//trying to update text
+app.put('/detail/:id', function(req, res){
+  Game.findById(req.params.id, function(err, game){
+    if(err){
+      res.status(500).send(err);
+    }else{
+      game.title = req.body.title || game.title;
+      game.year = req.body.year || game.year;
+      game.country = req.body.country || game.country;
+
+      game.save(function(err, game){
+        if(err){
+          res.status(500).send(err);
+        }
+        res.send(game);
+      });
+    }
+  });
+});
+
+
+//entering new game
 app.post('/', function(req, res){
   console.log(req.body);
 
@@ -36,6 +62,10 @@ app.post('/', function(req, res){
   res.redirect('/');
 });
 
+//function to edit text
+// function editGame(){
+//   document.getElementById('title').innerHTML = 'editTitle';
+// }
 
 // const game = new Game({title: "Tales of Destiny"});
 // game.save();

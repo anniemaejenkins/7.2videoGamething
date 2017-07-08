@@ -4,7 +4,7 @@ module.exports = {
   list: function(req, res) {
     Game.find({}).then(results => {
       console.log('results', results);
-      res.render("game/list", {model: results});
+      res.render('game/list', {model: results});
     });
   },
   detail: function(req, res) {
@@ -19,5 +19,5 @@ module.exports = {
       res.redirect('/');
     });
     console.log('this is the delete method');
-  }
+  },
 };
