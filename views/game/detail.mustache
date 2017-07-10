@@ -6,27 +6,32 @@
   </head>
   <body>
 
-    <h1>Feel free to click on the title, year, or country to change them.</h1>
+    <h1>Feel free to change the title, year, or country.</h1>
 
-    <!-- adding contenteditable lets you edit the text but not sure how to save the text -->
+
     {{#model}}
-    <h3 id="title" contenteditable="true">{{title}}</h3>
-    <ul>
-      {{#release}}
-        <span id="year" contenteditable="true">{{year}}</span>
-        <span id="country" contenteditable="true">{{country}}</span>
-      {{/release}}
-    </ul>
+      <form class="" action="/edit/{{_id}}" method="post">
+        <input type='text' name='title' placeholder={{title}}>
+        <input type="submit"  value="Edit Title">
+      </form>
     {{/model}}
 
-    <!-- {{#model}}
-      <form class="" action="/detail/{{_id}}" method="post">
-        <input type="submit"  name="" value="Edit Title">
-      </form>
-    {{/model}} -->
+    {{#model}}
+      {{#release}}
+        <form class="" action="index.html" method="post">
+          <input type="text" name="year" placeholder="{{year}}">
+          <input type="submit" value="Edit Year">
+          <br>
+          <input type="text" name="country" placeholder="{{country}}">
+          <input type="submit" value="Edit Country">
+          <!-- <span id="year" contenteditable="true">{{year}}</span>
+          <span id="country" contenteditable="true">{{country}}</span> -->
+        </form>
+      {{/release}}
+    {{/model}}
 
     {{#model}}
-      <form class="" action="/detail/{{_id}}" method="post">
+      <form class="" action="/delete/{{_id}}" method="post">
         <input type="submit" name="" value="delete game">
       </form>
     {{/model}}

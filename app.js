@@ -22,10 +22,10 @@ app.get('/', gameController.list);
 app.get('/detail/:id', gameController.detail)
 // app.get('/', gameController.edit);
 
-app.post('/detail/:id', gameController.delete);
+app.post('/delete/:id', gameController.delete);
 
 //
-app.post('/detail/:id', editController.edit);
+app.post('/edit/:id', gameController.edit);
 
 //trying to update text
 app.put('/detail/:id', function(req, res){
